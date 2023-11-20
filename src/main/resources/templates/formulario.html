@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="es">
+<div th:replace="Fragmentos/head" />
 <body>
-<form action="recibeParametros" method="get" th:object="*{formulario}"></form>
+<div th:replace="Fragmentos/header" />
+
+<div th:replace="Fragmentos/cuerpoFormulario" />
+
+<div th:replace="Fragmentos/footer" />
 </body>
 </html>
