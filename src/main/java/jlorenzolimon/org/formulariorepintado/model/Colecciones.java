@@ -1,11 +1,18 @@
 package jlorenzolimon.org.formulariorepintado.model;
 
+import lombok.*;
+
 import java.util.HashMap;
 import java.util.Map;
+
 public class Colecciones {
+    @Getter
     private static final Map<String, String> listaGeneros = new HashMap<>();
+    @Getter
     private static final Map<String, Pais> listaPaises = new HashMap<>();
+    @Getter
     private static final Map<String, String> listaMusicas = new HashMap<>();
+    @Getter
     private static final Map<String, String> listaAficiones = new HashMap<>();
     static{
         listaGeneros.put("F", "Femenino");
@@ -29,16 +36,5 @@ public class Colecciones {
         listaAficiones.put("P","Pintura");
         listaAficiones.put("V","Viajes");
     }
-    public static Map<String, String> getListaGeneros() {
-        return listaGeneros;
-    }
-    public static Map<String, Pais> getListaPaises() {
-        return listaPaises;
-    }
-    public static Map<String, String> getListaMusicas() {
-        return listaMusicas;
-    }
-    public static Map<String, String> getListaAficiones() {
-        return listaAficiones;
-    }
+
 }

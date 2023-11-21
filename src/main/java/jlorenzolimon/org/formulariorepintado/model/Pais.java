@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Pais {
     private String pais, idioma, prefijoTelefonoPais;
-    private boolean muestraIdioma;
+    private Boolean muestraIdioma;
     private String nombreArchivoBandera;
 
 }
