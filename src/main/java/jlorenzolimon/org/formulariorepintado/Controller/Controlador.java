@@ -12,6 +12,7 @@ import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
 import java.util.Map;
 
 @Controller
+@RequestMapping("formulario")
 public class Controlador {
     @ModelAttribute("lista_generos")
     private Map<String, String> devuelveListaGeneros(){

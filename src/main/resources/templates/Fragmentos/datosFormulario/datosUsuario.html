@@ -1,14 +1,7 @@
-<input type="hidden" th:field="*{iteraciones}">
-<label th:text="#{etiqueta_nombre}"></label><input type="text" th:field="*{nombre}">
-<label th:text="#{etiqueta_clave}"></label><input type="password" th:field="*{clave}">
-<label th:text="#{etiqueta_confirmarClave}"></label><input type="password" th:field="*{confirmarClave}">
+<legend>Datos Usuario</legend>
 
-<th:block th:each="genero : ${lista_generos}">
-    <label th:text="${genero.value}"/>
-    <input type="radio" th:field="*{generoSeleccionado}" th:value="${genero.value}" />
-</th:block>
-<button onclick=""></button>
+<div id="div_nombre"><label th:text="#{etiqueta_nombre}" th:for="nombre"/><input type="text" th:field="*{nombre}"></div>
 
-<label th:text="#{etiqueta_fechaNacimiento}"></label><input type="text" th:field="*{fechaNacimiento}">
-<label th:text="#{etiqueta_nombre}"></label><input type="text" th:field="*{nombre}">
-<label th:text="#{etiqueta_nombre}"></label><input type="text" th:field="*{nombre}">
+<div id="div_clave"><label th:text="#{etiqueta_clave}" th:for="clave"/><input type="password" th:field="*{clave}"></div>
+
+<div id="div_confirmarClave"><label th:text="#{etiqueta_confirmarClave}" th:for="confirmarClave"/><input type="password" th:field="*{confirmarClave}"></div>

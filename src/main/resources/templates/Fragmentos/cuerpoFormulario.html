@@ -1,4 +1,5 @@
 <form action="repintado" method="post" th:object="${formulario}">
+    <input type="hidden" th:field="*{iteraciones}">
     <fieldset th:insert="Fragmentos/datosFormulario/datosUsuario"/>
 
 

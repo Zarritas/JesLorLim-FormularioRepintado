@@ -1,0 +1,13 @@
+<div id="div_genero">
+    <label th:text="#{etiqueta_genero}"/>
+    <th:block th:each="genero : ${lista_generos}">
+        <label th:text="${genero.value}" th:for="${genero.value}"/>
+        <input type="radio" th:field="*{generoSeleccionado}" th:id="${genero.value}" th:value="${genero.value}" />
+    </th:block>
+    <button onclick=""></button>
+</div>
+
+<div><label th:text="#{etiqueta_fechaNacimiento}"/><input type="text" th:field="*{fechaNacimiento}"></div>
+
+<div><label th:text="#{etiqueta_edad}"/><input type="text" th:field="*{edad}"></div>
+<div><label th:text="#{etiqueta_paisNacimiento}" for="paisSeleccionado"/><select id="paisSeleccionado"></select></div>
