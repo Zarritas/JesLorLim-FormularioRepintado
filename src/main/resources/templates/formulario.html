@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
-<div th:replace="Fragmentos/head" />
+
+<html lang="es">
+
+<div
+        th:replace="~{Fragmentos/head}"
+/>
+
 <body>
-<div th:replace="Fragmentos/header" />
 
-<div th:replace="Fragmentos/cuerpoFormulario" />
+<div
+        th:replace="~{Fragmentos/header}"
+/>
 
-<div th:replace="Fragmentos/footer" />
+<div
+        th:replace="~{Fragmentos/cuerpoFormulario}"
+/>
+
+<div
+        th:replace="~{Fragmentos/footer}"
+/>
+
 </body>
+
+<script type="text/javascript" th:src="@{/js/main.js}"> </script>
+
 </html>

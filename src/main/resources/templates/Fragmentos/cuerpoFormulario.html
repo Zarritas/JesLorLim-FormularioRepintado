@@ -1,6 +1,31 @@
-<form action="repintado" method="post" th:object="${formulario}">
-    <input type="hidden" th:field="*{iteraciones}">
-    <fieldset th:insert="Fragmentos/datosFormulario/datosUsuario"/>
+<form
+        action="recibe-parametros"
+        method="post"
+        th:object="${formulario}"
+>
+    <input
+            type="hidden"
+            th:field="${iteraciones}"
+    >
 
+    <fieldset
+            th:insert="~{Fragmentos/datosFormulario/datosUsuario}"
+    />
+
+    <fieldset
+            th:insert="~{Fragmentos/datosFormulario/datosPersonales}"
+    />
+
+    <fieldset
+            th:insert="~{Fragmentos/datosFormulario/datosContacto}"
+    />
+
+    <fieldset
+            th:insert="~{Fragmentos/datosFormulario/otraInformacion}"
+    />
+
+    <div
+            th:insert="~{Fragmentos/datosFormulario/operacionesFormulario}"
+    />
 
 </form>

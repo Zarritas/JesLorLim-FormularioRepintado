@@ -1,0 +1,76 @@
+<legend>
+    Otra Información
+</legend>
+
+<table>
+    <tr
+            id="tr_Archivos"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_seleccionarArchivos}"
+                    th:for="archivos"
+            />
+        </td>
+        <td>
+            <input
+                    type="file"
+                    th:field="*{archivos}"
+                    multiple="multiple"
+            >
+            <th:block
+                    th:text="*{archivos}"
+            />
+        </td>
+    </tr>
+
+    <tr
+            id="tr_Musicas"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_Musicas}"
+                    th:for="musicasSeleccionadas"
+            />
+        </td>
+        <td>
+            <select
+                    th:field="*{musicasSeleccionadas}"
+                    multiple="multiple"
+            >
+                <option
+                        th:id="${musica.value}"
+                        th:each="musica : ${lista_musicas}"
+                        th:value="${musica.key}"
+                        th:text="${musica.value}"
+                />
+            </select>
+        </td>
+    </tr>
+
+    <tr
+            id="tr_Aficiones"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_Aficiones}"
+            />
+        </td>
+        <td>
+            <th:block
+                    th:each="aficion : ${lista_aficiones}"
+            >
+                <label
+                        th:text="${aficion.value}"
+                        th:for="${aficion.value}"
+                />
+                <input
+                        type="checkbox"
+                        th:field="*{aficionesSelecionadas}"
+                        th:id="${aficion.value}"
+                        th:value="${aficion.key}"
+                />
+            </th:block>
+        </td>
+    </tr>
+</table>

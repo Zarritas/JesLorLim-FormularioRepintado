@@ -1,5 +1,4 @@
 package jlorenzolimon.org.formulariorepintado.Controller;
-
 import jakarta.validation.Valid;
 import jlorenzolimon.org.formulariorepintado.model.*;
 import org.springframework.stereotype.Controller;
@@ -9,11 +8,17 @@ import org.springframework.web.bind.annotation.*;
 
 import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
 
+import java.util.ArrayList;
 import java.util.Map;
-
 @Controller
 @RequestMapping("formulario")
 public class Controlador {
+    @ModelAttribute("iteraciones")
+    private Integer iteraciones(){
+        Integer iteraciones = 0;
+        iteraciones++;
+        return iteraciones;
+    }
     @ModelAttribute("lista_generos")
     private Map<String, String> devuelveListaGeneros(){
         return getListaGeneros();
@@ -31,20 +36,30 @@ public class Controlador {
         return getListaMusicas();
     }
 
-    @GetMapping("formulario")
-    public String formulario( @ModelAttribute("formulario") Formulario formulario){
+    @GetMapping("devuelve")
+    public String devuelveFormulario( @ModelAttribute("formulario") DatosFormulario formulario){
+        formulario.setNombre("Lola");
+        formulario.setPrefijoTelefonico("33");
+        formulario.setSiglasPais("pt");
+        formulario.setMusicasSeleccionadas( new ArrayList<>(){{
+            add("F");
+            add("R");
+        }});
+        formulario.setAficionesSelecionadas( new ArrayList<>(){{
+            add("D");
+            add("V");
+            add("P");
+        }});
         return "formulario";
     }
-    @PostMapping("repintado")
-    public String recibeParametros(Model modelo,
-                                   @Valid @ModelAttribute("formulario") Formulario repintado,
+    @PostMapping("recibe-parametros")
+    public String recibeParametrosYRepinta(Model modelo,
+                                   @Valid @ModelAttribute("formulario") DatosFormulario repintado,
                                    BindingResult resultadoVinculadoParametros){
         String mensajeEnFormulario;
-        if (resultadoVinculadoParametros.hasErrors()) {
-            mensajeEnFormulario = "El formulario tiene errores.";
-        }else {
-            mensajeEnFormulario = "El formulario NO tiene errores";
-        }
+
+        if (resultadoVinculadoParametros.hasErrors()) {mensajeEnFormulario = "El formulario tiene errores.";}else{mensajeEnFormulario = "El formulario NO tiene errores";}
+
         modelo.addAttribute("mensaje",mensajeEnFormulario);
 
         return "formulario";

@@ -1,7 +1,74 @@
-<legend>Datos Usuario</legend>
+<legend>
+    Datos Usuario
+</legend>
+<table>
+    <tr
+            id="tr_nombre"
+    >
+        <td>
+            <label
+                th:text="#{etiqueta_nombre}"
+                th:for="nombre"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{nombre}"
+                    tabindex="1"
+                    placeholder="Introduce tu nombre"
+            />
+        </td>
+    </tr>
 
-<div id="div_nombre"><label th:text="#{etiqueta_nombre}" th:for="nombre"/><input type="text" th:field="*{nombre}"></div>
+    <tr
+            id="tr_clave"
+    >
+        <td>
+            <label
+                th:text="#{etiqueta_clave}"
+                th:for="clave"
+            />
+        </td>
+        <td>
+            <input
+                    type="password"
+                    th:field="*{clave}"
+                    tabindex="2"
+                    placeholder="Introduce la contraseña"
+            >
+        </td>
+    </tr>
 
-<div id="div_clave"><label th:text="#{etiqueta_clave}" th:for="clave"/><input type="password" th:field="*{clave}"></div>
+    <tr
+            id="tr_confirmarClave"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_confirmarClave}"
+                    th:for="confirmarClave"
+            />
+        </td>
+        <td>
+            <input
+                    type="password"
+                    th:field="*{confirmarClave}"
+                    tabindex="3"
+                    placeholder="Vuleve a introducirla"
+            >
+        </td>
+    </tr>
 
-<div id="div_confirmarClave"><label th:text="#{etiqueta_confirmarClave}" th:for="confirmarClave"/><input type="password" th:field="*{confirmarClave}"></div>
+    <tr
+            id="tr_botonMostrarClaves"
+    >
+        <td>
+            <button
+                    type="button"
+                    onclick="alternarFunciones()"
+            >
+                Mostrar claves
+            </button>
+        </td>
+    </tr>
+</table>

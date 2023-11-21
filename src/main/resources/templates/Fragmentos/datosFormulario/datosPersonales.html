@@ -1,13 +1,90 @@
-<div id="div_genero">
-    <label th:text="#{etiqueta_genero}"/>
-    <th:block th:each="genero : ${lista_generos}">
-        <label th:text="${genero.value}" th:for="${genero.value}"/>
-        <input type="radio" th:field="*{generoSeleccionado}" th:id="${genero.value}" th:value="${genero.value}" />
-    </th:block>
-    <button onclick=""></button>
-</div>
+<legend>
+    Datos Personales
+</legend>
 
-<div><label th:text="#{etiqueta_fechaNacimiento}"/><input type="text" th:field="*{fechaNacimiento}"></div>
+<table>
+    <tr
+            id="tr_genero"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_genero}"
+            />
+        </td>
+        <td>
+            <th:block
+                    th:each="genero : ${lista_generos}"
+            >
+                <label
+                        th:text="${genero.value}"
+                        th:for="${genero.value}"
+                />
+                <input
+                        type="radio"
+                        th:field="*{genero}"
+                        th:id="${genero.value}"
+                        th:value="${genero.value}"
+                />
+            </th:block>
+        </td>
+    </tr>
 
-<div><label th:text="#{etiqueta_edad}"/><input type="text" th:field="*{edad}"></div>
-<div><label th:text="#{etiqueta_paisNacimiento}" for="paisSeleccionado"/><select id="paisSeleccionado"></select></div>
+    <tr
+            id="tr_fechaNacimiento"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_fechaNacimiento}"
+                    th:for="fechaNacimiento"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{fechaNacimiento}"
+                    placeholder="dd/mm/aaaa"
+            >
+        </td>
+    </tr>
+
+    <tr
+            id="tr_edad"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_edad}"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{edad}"
+                    placeholder="0"
+            >
+        </td>
+    </tr>
+
+    <tr
+            id="tr_paisNacimiento"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_paisNacimiento}"
+                    th:for="paisSeleccionado"
+            />
+        </td>
+        <td>
+            <select
+                    th:field="*{siglasPais}"
+            >
+                <option
+                        th:id="${pais.value}"
+                        th:each="pais : ${lista_paises}"
+                        th:value="${pais.key}"
+                        th:text="${pais.value.getPais()}"
+                />
+            </select>
+        </td>
+    </tr>
+</table>
+

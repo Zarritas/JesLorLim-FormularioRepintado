@@ -1,0 +1,81 @@
+<legend>
+    Datos Contacto
+</legend>
+<table>
+    <tr
+            id="tr_prefijoTelefonico"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_prefijoTelefonico}"
+                    th:for="prefijoTelefonico"
+            />
+        </td>
+        <td>
+            <select
+                    th:field="*{prefijoTelefonico}"
+            >
+                <option
+                        th:id="${pais.value}"
+                        th:each="pais : ${lista_paises}"
+                        th:value="${pais.key}"
+                        th:text="${pais.value.getPrefijoTelefonoPais()}"
+                />
+            </select>
+        </td>
+    </tr>
+
+    <tr
+            id="tr_telefono"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_Telefono}"
+                    th:for="telefono"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{telefono}"
+                    placeholder="Introduzca su telefono"
+            />
+        </td>
+    </tr>
+
+    <tr
+            id="tr_email"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_Email}"
+                    th:for="email"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{email}"
+                    placeholder="Introduzca un email de la forma usuario@servidor.extension"
+            />
+        </td>
+    </tr>
+
+    <tr
+            id="tr_url"
+    >
+        <td>
+            <label
+                    th:text="#{etiqueta_URL}"
+                    th:for="url"
+            />
+        </td>
+        <td>
+            <input
+                    type="text"
+                    th:field="*{url}"
+                    placeholder="Añadir una URL"
+            />
+        </td>
+    </tr>
+</table>

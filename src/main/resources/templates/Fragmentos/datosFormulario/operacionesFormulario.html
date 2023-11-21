@@ -1,0 +1,30 @@
+<div
+        id="div_licencia"
+>
+    <label
+            th:text="#{etiqueta_Licencia}"
+            th:for="licencia"
+    />
+    <input
+            type="checkbox"
+            th:field="*{licencia}"
+    />
+</div>
+<input
+        type="submit"
+        th:value="#{boton_Enviar}"
+/>
+<input
+        type="reset"
+        th:value="#{boton_Restablecer}"
+/>
+<input
+        type="button"
+        th:value="#{boton_Limpiar}"
+/>
+
+<br/>
+
+<select>
+    <option th:each="pais:${lista_paises}" th:if="${pais.value.getMuestraIdioma() == true}" th:value="${pais.key}" th:text="${pais.value.getIdioma()}"/>
+</select>
