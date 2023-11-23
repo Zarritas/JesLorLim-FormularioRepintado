@@ -6,10 +6,10 @@ import jakarta.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 import java.time.Period;
 
-class FnacValidator implements ConstraintValidator<ValidarFnac, DatosFormulario> {
+class FnacValidator implements ConstraintValidator<ValidarFnac, LocalDate> {
     @Override
-    public boolean isValid(DatosFormulario formulario, ConstraintValidatorContext context) {
-        return Period.between(formulario.getFechaNacimiento(),LocalDate.now()).getYears()>18;
+    public boolean isValid(LocalDate localDate, ConstraintValidatorContext context) {
+        return Period.between(localDate,LocalDate.now()).getYears()>18;
     }
 }
 

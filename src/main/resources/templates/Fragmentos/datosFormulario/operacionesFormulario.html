@@ -25,6 +25,11 @@
 
 <br/>
 
-<select>
-    <option th:each="pais:${lista_paises}" th:if="${pais.value.getMuestraIdioma() == true}" th:value="${pais.key}" th:text="${pais.value.getIdioma()}"/>
+<select name="idioma" id="idioma">
+    <option
+            th:each="pais:${lista_paises}"
+            th:if="${pais.value.getMuestraIdioma() == true}"
+            th:value="${pais.key}"
+            th:text="${pais.value.getIdioma()}"
+    />
 </select>

@@ -1,42 +1,18 @@
 package jlorenzolimon.org.formulariorepintado.Controller;
 import jakarta.validation.Valid;
 import jlorenzolimon.org.formulariorepintado.model.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 @Controller
 @RequestMapping("formulario")
-public class Controlador implements WebMvcConfigurer {
-    @Bean
-    public LocaleResolver localResolver(){
-        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.getDefault());
-        return localeResolver;
-    }
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor(){
-        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
-        localeInterceptor.setIgnoreInvalidLocale(true);
-        localeInterceptor.setParamName("idioma");
-        return localeInterceptor;
-    }
-    @Override
-    public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(localeChangeInterceptor());
-    }
+public class Controlador {
 
     @ModelAttribute("iteraciones")
     private Integer iteraciones(){
@@ -62,10 +38,13 @@ public class Controlador implements WebMvcConfigurer {
     }
 
     @GetMapping("devuelve")
-    public String devuelveFormulario( @ModelAttribute("formulario") DatosFormulario datosFormulario){
+    public String devuelveFormulario(Model model,
+                                     @ModelAttribute("formulario") DatosFormulario datosFormulario){
+        String idioma = "es";
+        model.addAttribute("idioma",idioma);
         datosFormulario.setNombre("Lola");
         datosFormulario.setPrefijoTelefonico("33");
-        datosFormulario.setSiglasPais("it");
+        datosFormulario.setSiglasPais("pt");
         datosFormulario.setMusicasSeleccionadas( new ArrayList<>(){{
             add("F");
             add("R");

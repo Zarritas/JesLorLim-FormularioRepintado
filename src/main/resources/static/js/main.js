@@ -20,3 +20,11 @@ function alternarFunciones() {
     }
     funcionActual();
 }
+document.getElementById("idioma").addEventListener("change",cambioIdioma)
+function cambioIdioma(){
+    let selectedOption = document.getElementById("idioma").value;
+    if (selectedOption !== '') {
+        window.location.replace('?lang=' + selectedOption);
+        document.getElementById("idioma").value = selectedOption
+    }
+}

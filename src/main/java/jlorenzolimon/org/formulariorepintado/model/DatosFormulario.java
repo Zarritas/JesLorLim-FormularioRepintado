@@ -17,9 +17,11 @@ public class DatosFormulario {
     private String clave;
     @NotBlank
     private String confirmarClave;
-    @NotEmpty
+    @NotBlank
     private String genero;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull
+    @ValidarFnac
     private LocalDate fechaNacimiento;
     @NotNull
     private Integer edad;
