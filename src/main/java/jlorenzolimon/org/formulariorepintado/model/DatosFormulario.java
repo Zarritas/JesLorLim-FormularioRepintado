@@ -2,6 +2,7 @@ package jlorenzolimon.org.formulariorepintado.model;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,14 +12,14 @@ import java.util.List;
 public class DatosFormulario {
     @NotBlank
     private String nombre;
-    @Size(min = 6,max = 12, message = "La contraseña tiene que se entre 6 caracteres y 12 caracteres.")
-    @Pattern(regexp ="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]", message = "la contraseña no es valida.")
+    @Size(min = 6,max = 12)
+    @Pattern(regexp ="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]")
     private String clave;
     @NotBlank
     private String confirmarClave;
     @NotEmpty
     private String genero;
-    @NotBlank
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaNacimiento;
     @NotNull
     private Integer edad;

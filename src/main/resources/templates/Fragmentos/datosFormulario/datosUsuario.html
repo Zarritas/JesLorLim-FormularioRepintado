@@ -19,8 +19,11 @@
                     placeholder="Introduce tu nombre"
             />
         </td>
-    </tr>
 
+    </tr>
+    <tr th:each="error : ${#fields.errors('nombre')}" class="error">
+        <td><th:block th:text="${error}" class="error"/></td>
+    </tr>
     <tr
             id="tr_clave"
     >
@@ -38,6 +41,9 @@
                     placeholder="Introduce la contraseña"
             >
         </td>
+    </tr>
+    <tr th:each="error : ${#fields.errors('clave')}" class="error">
+        <td><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
@@ -57,6 +63,9 @@
                     placeholder="Vuleve a introducirla"
             >
         </td>
+    </tr>
+    <tr th:each="error : ${#fields.errors('confirmarClave')}" class="error">
+        <td><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
