@@ -3,7 +3,7 @@
 >
     <label
             th:text="#{etiqueta_Licencia}"
-            th:for="licencia"
+            th:for="licencia1"
     />
     <input
             type="checkbox"
@@ -25,7 +25,10 @@
 
 <br/>
 
-<select name="idioma" id="idioma">
+<select
+        id="idioma"
+        th:name="idioma"
+>
     <option
             th:each="pais:${lista_paises}"
             th:if="${pais.value.getMuestraIdioma() == true}"

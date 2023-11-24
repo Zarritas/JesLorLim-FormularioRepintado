@@ -40,8 +40,6 @@ public class Controlador {
     @GetMapping("devuelve")
     public String devuelveFormulario(Model model,
                                      @ModelAttribute("formulario") DatosFormulario datosFormulario){
-        String idioma = "es";
-        model.addAttribute("idioma",idioma);
         datosFormulario.setNombre("Lola");
         datosFormulario.setPrefijoTelefonico("33");
         datosFormulario.setSiglasPais("pt");
@@ -49,11 +47,14 @@ public class Controlador {
             add("F");
             add("R");
         }});
+
         datosFormulario.setAficionesSelecionadas( new ArrayList<>(){{
             add("D");
             add("V");
             add("P");
         }});
+        model.addAttribute("idioma","es");
+
         return "formulario";
     }
     @PostMapping("recibe-parametros")
