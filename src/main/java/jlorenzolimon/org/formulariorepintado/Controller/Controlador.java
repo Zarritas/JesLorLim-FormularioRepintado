@@ -53,7 +53,7 @@ public class Controlador {
             add("V");
             add("P");
         }});
-        model.addAttribute("idioma","es");
+//        model.addAttribute("idioma","es");
 
         return "formulario";
     }

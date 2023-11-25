@@ -25,14 +25,15 @@
 
 <br/>
 
-<select
-        id="idioma"
-        th:name="idioma"
->
-    <option
-            th:each="pais:${lista_paises}"
-            th:if="${pais.value.getMuestraIdioma() == true}"
-            th:value="${pais.key}"
-            th:text="${pais.value.getIdioma()}"
-    />
-</select>
+<!--<select-->
+<!--        id="idioma"-->
+<!--        name="idioma"-->
+<!--&gt;-->
+<!--    <option-->
+<!--            th:each="pais:${lista_paises}"-->
+<!--            th:if="${pais.value.getMuestraIdioma() == true}"-->
+<!--            th:value="${pais.key}"-->
+<!--            th:text="${pais.value.getIdioma()}"-->
+<!--    />-->
+<!--</select>-->
+<!--<input type="button" value="Cambiar Idioma" onclick="cambiarIdioma()">-->

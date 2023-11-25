@@ -27,9 +27,13 @@
                 />
             </th:block>
         </td>
+        <td><input type="button" onclick="deseleccionarRadio('genero')" value="Quitar Selección"></td>
+    </tr>
+    <tr>
+
     </tr>
     <tr th:each="error : ${#fields.errors('genero')}" class="error">
-        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
+        <td colspan="3"><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
@@ -50,7 +54,7 @@
         </td>
     </tr>
     <tr th:each="error : ${#fields.errors('fechaNacimiento')}" class="error">
-        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
+        <td colspan="3"><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
@@ -71,7 +75,7 @@
         </td>
     </tr>
     <tr th:each="error : ${#fields.errors('edad')}" class="error">
-        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
+        <td colspan="3"><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
@@ -97,7 +101,7 @@
         </td>
     </tr>
     <tr th:each="error : ${#fields.errors('siglasPais')}" class="error">
-        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
+        <td colspan="3"><th:block th:text="${error}" class="error"/></td>
     </tr>
 
 </table>

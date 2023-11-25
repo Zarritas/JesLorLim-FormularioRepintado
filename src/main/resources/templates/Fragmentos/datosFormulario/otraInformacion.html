@@ -45,6 +45,8 @@
                         th:text="${musica.value}"
                 />
             </select>
+            <input type="button" onclick="seleccionarSelect('musicasSeleccionadas')" value="Seleccionar select múltiple">
+            <input type="button" onclick="deseleccionarSelect('musicasSeleccionadas')" value="Deseleccionar select múltiple">
         </td>
     </tr>
 
@@ -71,6 +73,8 @@
                         th:value="${aficion.key}"
                 />
             </th:block>
+            <input type="button" onclick="seleccionarCheckbox('aficionesSelecionadas')" value="Seleccionar checkboxes">
+            <input type="button" onclick="deseleccionarCheckbox('aficionesSelecionadas')" value="Deseleccionar checkboxes">
         </td>
     </tr>
 </table>
