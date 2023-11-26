@@ -13,8 +13,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("formulario")
 public class Controlador {
-    //Creacion de las iteraciones
-    private int iteraciones=1;
     //Creacion de las Colecciones
     @ModelAttribute("lista_generos")
     private Map<String, String> devuelveListaGeneros(){
@@ -35,21 +33,23 @@ public class Controlador {
 
     //Metodo desde el que empieza el formulario nada más cargamos la web
     @GetMapping("devuelve")
-    public String devuelveFormulario(@ModelAttribute("formulario") DatosFormulario datosFormulario) {
+    public String devuelveFormulario(Model model, @ModelAttribute("formulario") DatosFormulario datosFormulario) {
         //Valores por defecto
         datosFormulario.setNombre("Lola");
         datosFormulario.setPrefijoTelefonico("33");
         datosFormulario.setSiglasPais("pt");
         datosFormulario.setMusicasSeleccionadas(Arrays.asList("F", "R"));
         datosFormulario.setAficionesSelecionadas(Arrays.asList("D", "V", "P"));
-
+        model.addAttribute("iteracion", 1);
         return "formulario";
     }
     //Metodo al que llama el formulario en el submit
     @PostMapping("recibe-parametros")
-    public String recibeParametrosYRepinta(Model modelo,
-                                   @Valid @ModelAttribute("formulario") DatosFormulario datosFormulario,
-                                   BindingResult resultadoVinculadoParametros){
+    public String recibeParametrosYRepinta(
+            Model modelo,
+            @RequestParam int iteracion,
+            @Valid @ModelAttribute("formulario") DatosFormulario datosFormulario,
+            BindingResult resultadoVinculadoParametros) {
         //Mensajes de error en caso de que los tengamos
         if (resultadoVinculadoParametros.hasErrors()) {
             modelo.addAttribute("mensaje_malo","ALERTA: Formulario con errores");
@@ -57,8 +57,8 @@ public class Controlador {
             modelo.addAttribute("mensaje_bueno","ALELUYA: Formulario sin errores");
         }
         //Incrementacion de iteraciones y añadirlas al formulario
-        iteraciones++;
-        modelo.addAttribute("iteracion",iteraciones);
+        iteracion++;
+        modelo.addAttribute("iteracion",iteracion);
 
         return "formulario";
     }
