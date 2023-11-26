@@ -1,6 +1,5 @@
 package jlorenzolimon.org.formulariorepintado.model;
 
-import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
 import jlorenzolimon.org.formulariorepintado.model.validaciones.*;
 import lombok.*;
@@ -23,8 +22,8 @@ public class DatosFormulario {
     private String confirmarClave;
     @NotBlank
     private String genero;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @ValidarFnac
     private LocalDate fechaNacimiento;
     @NotNull

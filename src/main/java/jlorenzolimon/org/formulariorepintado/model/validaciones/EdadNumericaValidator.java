@@ -12,10 +12,13 @@ public class EdadNumericaValidator implements ConstraintValidator<EdadNumerica, 
 
     @Override
     public boolean isValid(DatosFormulario datosFormulario, ConstraintValidatorContext context) {
+
         // Verifica si el valor es numérico
         if (!esNumero(String.valueOf(datosFormulario.getEdad()))) {
             return false;
         }
+        if(datosFormulario.getFechaNacimiento()==null)
+            return false;
 
         // Obtiene la edad calculada a partir del campo fecha de nacimiento
         int edadCalculada = calcularEdadDesdeFechaDeNacimiento(datosFormulario.getFechaNacimiento());

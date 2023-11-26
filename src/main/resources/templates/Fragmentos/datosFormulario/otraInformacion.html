@@ -28,6 +28,10 @@
         </td>
     </tr>
 
+    <tr th:each="error : ${#fields.errors('archivos')}" class="error">
+        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
+    </tr>
+
     <tr
             id="tr_Musicas"
     >
@@ -52,6 +56,9 @@
             <input type="button" onclick="seleccionarSelect('musicasSeleccionadas')" value="Seleccionar select múltiple">
             <input type="button" onclick="deseleccionarSelect('musicasSeleccionadas')" value="Deseleccionar select múltiple">
         </td>
+    </tr>
+    <tr th:each="error : ${#fields.errors('musicasSeleccionadas')}" class="error">
+        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
     </tr>
 
     <tr
@@ -80,5 +87,8 @@
             <input type="button" onclick="seleccionarCheckbox('aficionesSelecionadas')" value="Seleccionar checkboxes">
             <input type="button" onclick="deseleccionarCheckbox('aficionesSelecionadas')" value="Deseleccionar checkboxes">
         </td>
+    </tr>
+    <tr th:each="error : ${#fields.errors('aficionesSelecionadas')}" class="error">
+        <td colspan="2"><th:block th:text="${error}" class="error"/></td>
     </tr>
 </table>

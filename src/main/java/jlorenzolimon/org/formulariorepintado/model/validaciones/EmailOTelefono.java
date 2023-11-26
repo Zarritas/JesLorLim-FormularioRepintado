@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EmailOTelefono {
-    String message() default "Es oblicatorio el campo telefono";
+    String message() default "Añada o un Telefono válido o un Email válido";
 
     Class<?>[] groups() default {};
 

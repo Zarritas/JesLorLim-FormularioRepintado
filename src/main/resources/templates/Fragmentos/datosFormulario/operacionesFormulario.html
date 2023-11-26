@@ -9,6 +9,9 @@
             type="checkbox"
             th:field="*{licencia}"
     />
+    <div th:each="error : ${#fields.errors('licencia')}" class="error">
+        <th:block th:text="${error}" class="error"/>
+    </div>
 </div>
 <input
         type="submit"
@@ -25,15 +28,3 @@
 />
 
 <br/>
-
-<!--<select id="idioma" name="lang" onchange="cambiarIdioma()">-->
-<!--    <option value="en">English</option>-->
-<!--    <option value="es">Español</option>-->
-<!--</select>-->
-
-<!--<script>-->
-<!--    function cambiarIdioma() {-->
-<!--        let selectedOption = document.getElementById("idioma").value;-->
-<!--        window.location.replace('?lang=' + selectedOption);-->
-<!--    }-->
-<!--</script>-->

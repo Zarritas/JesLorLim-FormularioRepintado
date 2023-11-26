@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ValidarClave {
 
-    String message() default "Las contraseñas no coinciden.";
+    String message() default "Error en el funcionamiento de la aplicación";
 
     Class<?>[] groups() default { };
 

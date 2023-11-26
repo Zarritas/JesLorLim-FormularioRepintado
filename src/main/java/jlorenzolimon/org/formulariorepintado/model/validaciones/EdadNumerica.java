@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EdadNumerica {
 
-    String message() default "El valor debe ser numérico y coincidir con la edad calculada.";
+    String message() default "La edad debe ser la misma que la calculada en su fecha de nacimiento";
 
     Class<?>[] groups() default {};
 

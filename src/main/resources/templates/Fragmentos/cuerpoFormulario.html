@@ -24,6 +24,13 @@
             th:insert="~{Fragmentos/datosFormulario/otraInformacion}"
     />
 
+    <div class="error">
+        <th:block
+                th:if="${#fields.hasErrors('global')}"
+                th:errors="global"
+        />
+    </div>
+
     <div
             th:insert="~{Fragmentos/datosFormulario/operacionesFormulario}"
     />
