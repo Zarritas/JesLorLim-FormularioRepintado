@@ -4,8 +4,17 @@
 
 <table>
     <tr>
-        <td>Comentarios</td>
-        <td><textarea th:field="*{comentarios}" cols="30" rows="10"/></td>
+        <td><label
+                th:text="#{etiqueta_comentarios}"
+                th:for="comentarios"
+        /></td>
+        <td>
+            <textarea
+                th:field="*{comentarios}"
+                cols="30"
+                rows="10"
+            />
+        </td>
     </tr>
     <tr
             id="tr_Archivos"
