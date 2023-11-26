@@ -1,6 +1,8 @@
 package jlorenzolimon.org.formulariorepintado.model;
 
+import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
+import jlorenzolimon.org.formulariorepintado.model.validaciones.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,11 +11,13 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 @Data
 @ValidarClave
+@EdadNumerica
+@EmailOTelefono
 public class DatosFormulario {
     @NotBlank
     private String nombre;
     @Size(min = 6,max = 12)
-    @Pattern(regexp ="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).*$")
     private String clave;
     @NotBlank
     private String confirmarClave;
@@ -28,21 +32,22 @@ public class DatosFormulario {
     @NotNull
     private String prefijoTelefonico;
     @NotNull
-    private Integer telefono;
+    private String telefono;
     @NotNull
     private String email;
     @NotNull
     private String url;
+    @NotNull
     @NotBlank
+    @CodigoPaisValido
     private String siglasPais;
     @NotNull
     private List<String> archivos;
-    @NotNull
     private List<String> musicasSeleccionadas;
-    @NotNull
     private List<String> aficionesSelecionadas;
     @NotNull
     private String comentarios;
     @NotNull
+    @AssertTrue
     private Boolean licencia;
 }

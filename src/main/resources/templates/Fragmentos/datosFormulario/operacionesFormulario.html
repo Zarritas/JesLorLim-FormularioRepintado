@@ -21,19 +21,19 @@
 <input
         type="button"
         th:value="#{boton_Limpiar}"
+        onclick="borrarCampos()"
 />
 
 <br/>
 
-<!--<select-->
-<!--        id="idioma"-->
-<!--        name="idioma"-->
-<!--&gt;-->
-<!--    <option-->
-<!--            th:each="pais:${lista_paises}"-->
-<!--            th:if="${pais.value.getMuestraIdioma() == true}"-->
-<!--            th:value="${pais.key}"-->
-<!--            th:text="${pais.value.getIdioma()}"-->
-<!--    />-->
+<!--<select id="idioma" name="lang" onchange="cambiarIdioma()">-->
+<!--    <option value="en">English</option>-->
+<!--    <option value="es">Español</option>-->
 <!--</select>-->
-<!--<input type="button" value="Cambiar Idioma" onclick="cambiarIdioma()">-->
+
+<!--<script>-->
+<!--    function cambiarIdioma() {-->
+<!--        let selectedOption = document.getElementById("idioma").value;-->
+<!--        window.location.replace('?lang=' + selectedOption);-->
+<!--    }-->
+<!--</script>-->

@@ -1,4 +1,4 @@
-package jlorenzolimon.org.formulariorepintado.model;
+package jlorenzolimon.org.formulariorepintado.model.validaciones;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

@@ -58,37 +58,31 @@ function deseleccionarRadio(nombreGrupo) {
         radio.checked = false;
     });
 }
+function borrarCampos() {
+    let formInputs = document.getElementsByTagName("input");
+    for (let i = 0; i < formInputs.length; i++) {
+        let type = formInputs[i].type.toLowerCase();
+        switch (type) {
+            case "text":
+            case "password":
+            case "file":
+                formInputs[i].value = "";
+                break;
+            case "checkbox":
+            case "radio":
+                formInputs[i].checked = false;
+                break;
+        }
+    }
 
+    let formSelects = document.getElementsByTagName("select");
+    for (let i = 0; i < formSelects.length; i++) {
+        formSelects[i].selectedIndex = 0;
+    }
+    deseleccionarSelect("musicasSeleccionadas");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function cambiarIdioma() {
-//     let selectedOption = document.getElementById("idioma").value;
-//     if (selectedOption !== '') {
-//         // Asegúrate de construir correctamente la URL con el parámetro lang
-//         let newUrl = window.location.pathname + '?lang=' + selectedOption;
-//
-//         // Verifica si hay parámetros de consulta existentes
-//         let queryParams = window.location.search;
-//         if (queryParams) {
-//             // Reemplaza el valor del parámetro lang si ya existe
-//             newUrl = newUrl.replace(/([&?]lang=)[^&]*/, '$1' + selectedOption);
-//         }
-//
-//         // Realiza la recarga de la página con la nueva URL
-//         window.location.replace(newUrl);
-//     }
-// }
+    let formTextareas = document.getElementsByTagName("textarea");
+    for (let i = 0; i < formTextareas.length; i++) {
+        formTextareas[i].value = "";
+    }
+}
