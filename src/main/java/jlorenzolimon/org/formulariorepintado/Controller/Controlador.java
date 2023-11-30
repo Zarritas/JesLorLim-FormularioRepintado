@@ -62,4 +62,12 @@ public class Controlador {
 
         return "formulario";
     }
+
+    @GetMapping("saludo")
+    @ResponseBody
+    public String saludo(@RequestAttribute Integer contadorModificado){
+        String mSalida="<div>Mensaje dentro del Endpoint</div>";
+        mSalida += "<div>Contador: "+contadorModificado+"</div>";
+        return mSalida;
+    }
 }
