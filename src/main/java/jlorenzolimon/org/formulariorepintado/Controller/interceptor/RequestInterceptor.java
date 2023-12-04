@@ -27,8 +27,8 @@ public class RequestInterceptor implements HandlerInterceptor {
             System.out.println("Method name:" + methodName);
         }
         // incrementando contador
-        Integer contadorModificado = Integer.parseInt(solicitudHttp.getParameter("contador"))+1;
-        solicitudHttp.setAttribute("contadorModificado",contadorModificado);
+//        Integer contadorModificado = Integer.parseInt(solicitudHttp.getParameter("contador"))+1;
+//        solicitudHttp.setAttribute("contadorModificado",contadorModificado);
         return true;
     }
 

@@ -1,4 +1,4 @@
-package jlorenzolimon.org.formulariorepintado.configuracion;
+package jlorenzolimon.org.formulariorepintado.config;
 
 import jlorenzolimon.org.formulariorepintado.Controller.interceptor.RequestInterceptor;
 import org.springframework.context.annotation.Configuration;

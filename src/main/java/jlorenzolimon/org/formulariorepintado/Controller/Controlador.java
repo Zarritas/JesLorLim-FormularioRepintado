@@ -63,11 +63,22 @@ public class Controlador {
         return "formulario";
     }
 
+
     @GetMapping("saludo")
+    //curl -i http://localhost:8080/formulario/saludo
+    public String saludo(){
+        return "saludo";
+    }
+    @GetMapping("/ex/foos")
     @ResponseBody
-    public String saludo(@RequestAttribute Integer contadorModificado){
-        String mSalida="<div>Mensaje dentro del Endpoint</div>";
-        mSalida += "<div>Contador: "+contadorModificado+"</div>";
-        return mSalida;
+    //curl -i http://localhost:8080/formulario/ex/foos
+    public String getFoosBySimplePath(){
+        return "Get some foos";
+    }
+    @PostMapping("/ex/foos")
+    @ResponseBody
+    //curl -i -X POST http://localhost:8080/formulario/ex/foos
+    public String postFoosBySimplePath(){
+        return "Post some foos";
     }
 }

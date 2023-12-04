@@ -23,10 +23,18 @@ repositories {
 }
 
 dependencies {
+    // Implementaciones con dependencias
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.1.2'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Tests con dependencias
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'org.hamcrest:hamcrest'
+    testImplementation 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('bootBuildImage') {
