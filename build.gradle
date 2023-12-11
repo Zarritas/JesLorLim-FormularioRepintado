@@ -35,6 +35,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.hamcrest:hamcrest'
     testImplementation 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'junit:junit:4.13.1'
 }
 
 tasks.named('bootBuildImage') {
