@@ -1,8 +1,13 @@
 package jlorenzolimon.org.formulariorepintado.Controller;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jlorenzolimon.org.formulariorepintado.model.*;
 import jlorenzolimon.org.formulariorepintado.service.ServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -145,5 +150,25 @@ public class Controlador {
             return mi_servicio.devuelveGeneroPorClave(clave);
         else
             return mi_servicio.devuelveGeneros();
+    }
+
+    @GetMapping(value= "manejo-cookie")
+    @ResponseBody
+    public String manejoCookie(Model model,
+                               HttpServletResponse respuestaHttp,
+                               @CookieValue(name="contador", defaultValue="0") String contenido) {
+        int num=1;
+        if (!contenido.equals("0")) {
+            num = Integer.parseInt(contenido);
+            num++;
+            contenido = String.valueOf(num);
+        }
+        Cookie miCookie = new Cookie("contador", contenido);
+        respuestaHttp.addCookie(miCookie);
+
+//        ResponseCookie responseCookie = ResponseCookie.from("miCookie", String.valueOf(num)).build();
+//        ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString()).build();
+
+        return "El valor de la cookie es " + num;
     }
 }
