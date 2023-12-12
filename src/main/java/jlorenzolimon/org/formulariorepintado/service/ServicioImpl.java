@@ -3,6 +3,9 @@ package jlorenzolimon.org.formulariorepintado.service;
 import jlorenzolimon.org.formulariorepintado.model.Colecciones;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class ServicioImpl implements Servicio{
     public Object devuelvePaises(){
@@ -39,4 +42,6 @@ public class ServicioImpl implements Servicio{
     public Object devuelvePaisDosPorClave(String clave){
         return Colecciones.getListaPaisesDos().get(clave);
     }
+
+    public Map<String, String> devuelveCredenciales(){return Colecciones.getCredenciales();}
 }

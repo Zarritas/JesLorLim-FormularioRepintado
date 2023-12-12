@@ -16,6 +16,8 @@ public class Colecciones {
     private static final Map<String, String> listaAficiones = new HashMap<>();
     @Getter
     private static final Map<String, String> listaPaisesDos = new HashMap<>();
+    @Getter
+    private static final Map<String, String> credenciales = new HashMap<>();
     static{
         listaGeneros.put("F", "Femenino");
         listaGeneros.put("M", "Masculino");
@@ -43,6 +45,9 @@ public class Colecciones {
         listaPaisesDos.put("IT","Italia");
         listaPaisesDos.put("PT","Portugal");
 
+        credenciales.put("admin","admin");
+        credenciales.put("user","user");
+        credenciales.put("patata","patata");
     }
 
 }

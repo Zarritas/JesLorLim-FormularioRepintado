@@ -5,9 +5,6 @@ import jakarta.validation.Valid;
 import jlorenzolimon.org.formulariorepintado.model.*;
 import jlorenzolimon.org.formulariorepintado.service.ServicioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 @Controller
 @RequestMapping("formulario")
@@ -23,27 +21,6 @@ public class Controlador {
 
     @Autowired
     ServicioImpl mi_servicio;
-
-    //Creacion de las Colecciones
-    @ModelAttribute("lista_generos")
-    private Map<String, String> devuelveListaGeneros() {
-        return getListaGeneros();
-    }
-
-    @ModelAttribute("lista_paises")
-    private Map<String, Pais> devuelveListaPaises() {
-        return getListaPaises();
-    }
-
-    @ModelAttribute("lista_aficiones")
-    private Map<String, String> devuelveListaAficiones() {
-        return getListaAficiones();
-    }
-
-    @ModelAttribute("lista_musicas")
-    private Map<String, String> devuelveListaMusicas() {
-        return getListaMusicas();
-    }
 
     //Metodo desde el que empieza el formulario nada más cargamos la web
     @GetMapping("devuelve")
@@ -156,12 +133,16 @@ public class Controlador {
     @ResponseBody
     public String manejoCookie(Model model,
                                HttpServletResponse respuestaHttp,
-                               @CookieValue(name="contador", defaultValue="0") String contenido) {
-        int num=1;
-        if (!contenido.equals("0")) {
-            num = Integer.parseInt(contenido);
-            num++;
-            contenido = String.valueOf(num);
+                               @CookieValue(name="contador", defaultValue="1") String contenido) {
+        int num=0;
+        try {
+            if (!contenido.equals("0")) {
+                num = Integer.parseInt(contenido);
+                num++;
+                contenido = String.valueOf(num);
+            }
+        }catch (Exception e) {
+            return "Error con las Cookies";
         }
         Cookie miCookie = new Cookie("contador", contenido);
         respuestaHttp.addCookie(miCookie);
@@ -169,6 +150,40 @@ public class Controlador {
 //        ResponseCookie responseCookie = ResponseCookie.from("miCookie", String.valueOf(num)).build();
 //        ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString()).build();
 
-        return "El valor de la cookie es " + num;
+        return "El valor de la cookie es " + contenido;
+    }
+
+    private String contenidoCookie ="";
+    @GetMapping("login")
+    public String login(){
+        return "Cookies/Usuario";
+    }
+    @PostMapping(value = "Usuario")
+    public String Usuario(Model model,
+                        HttpServletResponse respuestaHttp,
+                        @RequestParam String usuario) {
+        if (!mi_servicio.devuelveCredenciales().containsKey(usuario)) {
+            return "Cookies/Usuario";
+        }else {
+            contenidoCookie = "";
+            int num = 1;
+            contenidoCookie += num + "!" + usuario + "#";
+            return "Cookies/Clave";
+        }
+    }
+
+
+    @PostMapping(value = "Clave")
+    @ResponseBody
+    public String clave(Model model,
+                          HttpServletResponse respuestaHttp,
+                          @RequestParam String passw) {
+        if (!mi_servicio.devuelveCredenciales().containsValue(passw)) {
+            return "Cookies/Clave";
+        }else {
+            Cookie miCookie = new Cookie("usuario", contenidoCookie);
+            respuestaHttp.addCookie(miCookie);
+            return "Bienvenido " + contenidoCookie;
+        }
     }
 }
