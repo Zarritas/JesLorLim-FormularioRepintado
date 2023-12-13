@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import static java.lang.Integer.parseInt;
 import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -137,7 +139,7 @@ public class Controlador {
         int num=0;
         try {
             if (!contenido.equals("0")) {
-                num = Integer.parseInt(contenido);
+                num = parseInt(contenido);
                 num++;
                 contenido = String.valueOf(num);
             }
@@ -154,36 +156,55 @@ public class Controlador {
     }
 
     private String contenidoCookie ="";
+    private String usuario = "";
+    private final ArrayList<Usuario> lista = new ArrayList<>();
+    private int num;
     @GetMapping("login")
     public String login(){
         return "Cookies/Usuario";
     }
     @PostMapping(value = "Usuario")
-    public String Usuario(Model model,
-                        HttpServletResponse respuestaHttp,
-                        @RequestParam String usuario) {
+    public String Usuario(@RequestParam String usuario,
+                          @CookieValue(name="usuario", defaultValue="") String contenido) {
+        if (contenido.isEmpty()) {
+            this.usuario = usuario;
+            lista.clear();
+        }
+        this.usuario = usuario;
+        this.num = 1;
         if (!mi_servicio.devuelveCredenciales().containsKey(usuario)) {
             return "Cookies/Usuario";
         }else {
-            contenidoCookie = "";
-            int num = 1;
-            contenidoCookie += num + "!" + usuario + "#";
             return "Cookies/Clave";
         }
     }
 
 
+
     @PostMapping(value = "Clave")
-    @ResponseBody
     public String clave(Model model,
                           HttpServletResponse respuestaHttp,
                           @RequestParam String passw) {
         if (!mi_servicio.devuelveCredenciales().containsValue(passw)) {
             return "Cookies/Clave";
         }else {
+            iniciosDeSesion();
             Cookie miCookie = new Cookie("usuario", contenidoCookie);
             respuestaHttp.addCookie(miCookie);
-            return "Bienvenido " + contenidoCookie;
+            model.addAttribute("sesion","Bienvenido " + usuario);
+            return "Cookies/Sesion";
         }
+
+    }
+    public boolean iniciosDeSesion(){
+
+        String [] usuarios = usuario.split("#");
+        for (int i = 0; i < usuarios.length ; i++) {
+            String [] partes = usuario.split("!");
+            lista.add(new Usuario(parseInt(partes[0]), partes[1]));
+        }
+
+
+        return false;
     }
 }
