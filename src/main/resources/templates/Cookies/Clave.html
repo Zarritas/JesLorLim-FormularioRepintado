@@ -5,7 +5,8 @@
     <title>Contraseña</title>
 </head>
 <body>
-  <form action="Clave" method="post">
+  <form action="Clave" method="post" th:object="${usuario}">
+    <label th:for="nombre">Usuario</label><input type="hidden" th:field="*{nombre}">
     <label for="passw">Contraseña</label><input type="password" name="passw" id="passw">
     <input type="submit" value="Enviar">
   </form>

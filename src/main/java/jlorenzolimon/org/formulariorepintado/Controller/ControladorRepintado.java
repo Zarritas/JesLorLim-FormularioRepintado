@@ -1,6 +1,4 @@
 package jlorenzolimon.org.formulariorepintado.Controller;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jlorenzolimon.org.formulariorepintado.model.*;
 import jlorenzolimon.org.formulariorepintado.service.ServicioImpl;
@@ -10,16 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import static java.lang.Integer.parseInt;
-import static jlorenzolimon.org.formulariorepintado.model.Colecciones.*;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 @Controller
 @RequestMapping("formulario")
-public class Controlador {
+public class ControladorRepintado {
 
     @Autowired
     ServicioImpl mi_servicio;
@@ -129,82 +121,5 @@ public class Controlador {
             return mi_servicio.devuelveGeneroPorClave(clave);
         else
             return mi_servicio.devuelveGeneros();
-    }
-
-    @GetMapping(value= "manejo-cookie")
-    @ResponseBody
-    public String manejoCookie(Model model,
-                               HttpServletResponse respuestaHttp,
-                               @CookieValue(name="contador", defaultValue="1") String contenido) {
-        int num=0;
-        try {
-            if (!contenido.equals("0")) {
-                num = parseInt(contenido);
-                num++;
-                contenido = String.valueOf(num);
-            }
-        }catch (Exception e) {
-            return "Error con las Cookies";
-        }
-        Cookie miCookie = new Cookie("contador", contenido);
-        respuestaHttp.addCookie(miCookie);
-
-//        ResponseCookie responseCookie = ResponseCookie.from("miCookie", String.valueOf(num)).build();
-//        ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString()).build();
-
-        return "El valor de la cookie es " + contenido;
-    }
-
-    private String contenidoCookie ="";
-    private String usuario = "";
-    private final ArrayList<Usuario> lista = new ArrayList<>();
-    private int num;
-    @GetMapping("login")
-    public String login(){
-        return "Cookies/Usuario";
-    }
-    @PostMapping(value = "Usuario")
-    public String Usuario(@RequestParam String usuario,
-                          @CookieValue(name="usuario", defaultValue="") String contenido) {
-        if (contenido.isEmpty()) {
-            this.usuario = usuario;
-            lista.clear();
-        }
-        this.usuario = usuario;
-        this.num = 1;
-        if (!mi_servicio.devuelveCredenciales().containsKey(usuario)) {
-            return "Cookies/Usuario";
-        }else {
-            return "Cookies/Clave";
-        }
-    }
-
-
-
-    @PostMapping(value = "Clave")
-    public String clave(Model model,
-                          HttpServletResponse respuestaHttp,
-                          @RequestParam String passw) {
-        if (!mi_servicio.devuelveCredenciales().containsValue(passw)) {
-            return "Cookies/Clave";
-        }else {
-            iniciosDeSesion();
-            Cookie miCookie = new Cookie("usuario", contenidoCookie);
-            respuestaHttp.addCookie(miCookie);
-            model.addAttribute("sesion","Bienvenido " + usuario);
-            return "Cookies/Sesion";
-        }
-
-    }
-    public boolean iniciosDeSesion(){
-
-        String [] usuarios = usuario.split("#");
-        for (int i = 0; i < usuarios.length ; i++) {
-            String [] partes = usuario.split("!");
-            lista.add(new Usuario(parseInt(partes[0]), partes[1]));
-        }
-
-
-        return false;
     }
 }

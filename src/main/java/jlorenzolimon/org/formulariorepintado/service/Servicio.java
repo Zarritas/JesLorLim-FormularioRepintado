@@ -1,8 +1,7 @@
 package jlorenzolimon.org.formulariorepintado.service;
 
-import jlorenzolimon.org.formulariorepintado.model.Colecciones;
+import jlorenzolimon.org.formulariorepintado.model.Usuario;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public interface Servicio {
@@ -20,5 +19,5 @@ public interface Servicio {
 
     public Object devuelvePaisesDos();
     public Object devuelvePaisDosPorClave(String clave);
-    public Map<String, String> devuelveCredenciales();
+    public Map<Usuario, String> devuelveCredenciales();
 }
