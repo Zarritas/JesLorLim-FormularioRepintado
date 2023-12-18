@@ -19,5 +19,5 @@ public interface Servicio {
 
     public Object devuelvePaisesDos();
     public Object devuelvePaisDosPorClave(String clave);
-    public Map<Usuario, String> devuelveCredenciales();
+    public Map<String, String> devuelveCredenciales();
 }

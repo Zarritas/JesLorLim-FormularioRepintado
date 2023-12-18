@@ -4,9 +4,8 @@ import lombok.*;
 
 import java.util.Objects;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Usuario {
     private int numero;
     private String nombre;
@@ -15,5 +14,10 @@ public class Usuario {
     }
     public void incrementarNumero(){
         numero++;
+    }
+
+    @Override
+    public String toString() {
+        return nombre+":"+numero;
     }
 }

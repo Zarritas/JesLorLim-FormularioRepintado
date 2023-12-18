@@ -43,5 +43,5 @@ public class ServicioImpl implements Servicio{
         return Colecciones.getListaPaisesDos().get(clave);
     }
 
-    public Map<Usuario, String> devuelveCredenciales(){return Colecciones.getCredenciales();}
+    public Map<String, String> devuelveCredenciales(){return Colecciones.getCredenciales();}
 }
