@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contraseña</title>
+</head>
+<body>
+  <form action="paso2" method="post">
+    <input type="hidden" name="nombre" th:value="${nombre}">
+    <label for="clave">Contraseña</label><input type="password" name="clave" id="clave">
+    <input type="submit" value="Enviar">
+  </form>
+</body>
+</html>
